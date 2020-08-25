@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
 import axios from 'axios'
 import apiUrl from '../../apiConfig.js'
@@ -47,4 +47,4 @@ const ItemCreate = props => {
   )
 }
 
-export default ItemCreate
+export default withRouter(ItemCreate)

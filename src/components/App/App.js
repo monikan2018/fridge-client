@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
@@ -50,7 +50,7 @@ class App extends Component {
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
           <AuthenticatedRoute user={user} exact path='/add-item' render={() => (
-            <ItemCreate />
+            <ItemCreate msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
@@ -64,4 +64,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withRouter(App)
