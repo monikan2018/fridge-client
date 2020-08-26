@@ -7,5 +7,7 @@ export default {
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   itemCreateSuccess: 'Item has been successfully created',
-  itemCreationFailure: 'Item creation failed.'
+  itemCreationFailure: 'Item creation failed.',
+  itemIndexSuccess: 'Item has been successfully viewed',
+  itemIndexFailure: 'Item view failed.'
 }
