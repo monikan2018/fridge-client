@@ -20,7 +20,7 @@ export const itemCreate = (item, user) => {
     }
   })
 }
-export const index = (items, user) => {
+export const index = (item, user) => {
   return axios({
     headers: {
       'Authorization': `Token token=${user.token}`
@@ -28,10 +28,10 @@ export const index = (items, user) => {
     url: apiUrl + '/items',
     method: 'GET',
     data: {
-      items: {
-        name: items.name,
-        quantity: items.quantity,
-        price: items.price
+      item: {
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price
       }
     }
   })
