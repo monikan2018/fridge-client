@@ -7,6 +7,7 @@ import Header from '../Header/Header'
 import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import ItemCreate from '../routes/ItemCreate'
+import Items from '../routes/Items'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Home from '../routes/Home.js'
@@ -62,6 +63,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/item-create' render={() => (
             <ItemCreate msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/items' render={() => (
+            <Items msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>
