@@ -1,19 +1,34 @@
 import React, { Fragment } from 'react'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 
 const authenticatedOptions = (
   <Fragment>
     <Nav.Link href="#fridge-items">Fridge Items</Nav.Link>
     <Nav.Link href="#item-create">Add Item</Nav.Link>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
+    <NavDropdown title="Settings" alignRight id="settings-dropdown">
+      <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item href="#sign-out">Sign Out</NavDropdown.Item>
+    </NavDropdown>
   </Fragment>
 )
 
 const unauthenticatedOptions = (
   <Fragment>
     <Nav.Link href="#sign-up">Sign Up</Nav.Link>
+    { /* <NavDropdown title="Sign In" id="sign-in-dropdown">
+          <form onSubmit={this.onSignIn} className="px-8 py-6">
+          <div className="form-group">
+             <label>Email address</label>
+             <input type="email" className="form-control" placeholder="fridge@fridge.com"/>
+          </div>
+         <div className="form-group">
+           <label>Password</label>
+           <input type="password" className="form-control" placeholder="password"/>
+         </div>
+         <button type="submit" className="btn btn-primary">Sign In</button>
+       </form>
+     </NavDropdown> */}
     <Nav.Link href="#sign-in">Sign In</Nav.Link>
   </Fragment>
 )
@@ -25,7 +40,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar bg="transparent" variant="light" expand="md">
     <Navbar.Brand href="#">
       Fridge
     </Navbar.Brand>
