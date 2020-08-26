@@ -1,1 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
+
+$background-color: #dcf6ff;
+$black-font: #000;
+
+* {
+  // font-weight: lighter;
+  letter-spacing: 2px;
+}
+
+body {
+  background-color: $background-color;
+}
