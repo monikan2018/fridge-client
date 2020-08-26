@@ -3,7 +3,7 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#fridge-items">Fridge Items</Nav.Link>
+    <Nav.Link href="#items">Fridge Items</Nav.Link>
     <Nav.Link href="#item-create">Add Item</Nav.Link>
     <NavDropdown title="Settings" alignRight id="settings-dropdown">
       <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
