@@ -3,14 +3,15 @@ import { Route, withRouter } from 'react-router-dom'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
+import ChangePassword from '../ChangePassword/ChangePassword'
 import Header from '../Header/Header'
+import Home from '../routes/Home.js'
+import ItemCreate from '../routes/ItemCreate'
+import ItemEdit from '../routes/ItemEdit.js'
+import Items from '../routes/Items'
 import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
-import ItemCreate from '../routes/ItemCreate'
-import Items from '../routes/Items'
 import SignOut from '../SignOut/SignOut'
-import ChangePassword from '../ChangePassword/ChangePassword'
-import Home from '../routes/Home.js'
 
 class App extends Component {
   constructor () {
