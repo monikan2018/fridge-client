@@ -9,5 +9,7 @@ export default {
   itemCreateSuccess: 'Item has been successfully created',
   itemCreationFailure: 'Item creation failed.',
   itemIndexSuccess: 'Item has been successfully viewed',
-  itemIndexFailure: 'Item view failed.'
+  itemIndexFailure: 'Item view failed.',
+  itemEditSuccess: 'Item successfully edited.',
+  itemEditFailure: 'Item was not edited.'
 }
