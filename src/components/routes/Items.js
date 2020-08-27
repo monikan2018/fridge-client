@@ -20,7 +20,7 @@ class Items extends Component {
       .then(res => this.setState({ items: res.data.items }))
       .then(() => msgAlert({
         heading: 'Item Show Success',
-        message: messages.itemShowSuccess,
+        message: messages.itemIndexSuccess,
         variant: 'success'
       }))
       // .then(() => history.push('/'))
