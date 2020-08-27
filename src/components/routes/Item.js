@@ -38,8 +38,11 @@ class Item extends Component {
       })
   }
 
-  destroyItem = () => {
+  destroyItem = (user) => {
     axios({
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      },
       url: `${apiUrl}/items/${this.props.match.params.id}`,
       method: 'DELETE'
     })
@@ -62,7 +65,7 @@ class Item extends Component {
       // redirect to the home page
       return <Redirect to={{
         // Redirect to the home page ('/')
-        pathname: '/',
+        pathname: '/items',
         // Pass along a message, in state, that we can show
         state: { message: 'Deleted item successfully' }
       }} />
@@ -74,7 +77,7 @@ class Item extends Component {
         <p>Item: {item.name}</p>
         <p>Quantity: {item.quantity}</p>
         <p>Price: {item.price}</p>
-        <button onClick={this.destroyBook}>Delete Book</button>
+        <button onClick={this.destroyItem}>Delete Item</button>
         {/* Add a link to the edit item route when you click the edit button */}
         <Link to={`/item/${this.props.match.params.id}/edit`}>
           <button>Edit</button>
