@@ -55,15 +55,12 @@ export const show = (id, user) => {
 //     method: 'DELETE',
 //   })
 // }
-export const editItem = (user, itemId, item) => {
-  // const itemId = item._id
-  // console.log(item._id)
+export const editItem = (id, user, item) => {
   return axios({
     headers: {
       'Authorization': `Token token=${user.token}`
     },
-    // ** DO WE NEED TO PASS IN ID? IF SO, HOW?
-    url: apiUrl + '/items/' + itemId,
+    url: apiUrl + '/items/' + id,
     method: 'PATCH',
     data: {
       item: {
