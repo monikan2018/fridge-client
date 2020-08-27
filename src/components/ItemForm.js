@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ItemForm = ({ items, handleSubmit, handleChange, cancelPath }) => (
+const ItemForm = ({ item, handleSubmit, handleChange, cancelPath }) => (
   <form onSubmit={handleSubmit}>
     <label>Name</label>
     <input

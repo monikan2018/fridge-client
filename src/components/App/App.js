@@ -4,13 +4,14 @@ import { Route, withRouter } from 'react-router-dom'
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../Header/Header'
+import Home from '../routes/Home.js'
+import ItemCreate from '../routes/ItemCreate'
+import ItemEdit from '../routes/ItemEdit.js'
+import Items from '../routes/Items'
 import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
-import ItemCreate from '../routes/ItemCreate'
-import Items from '../routes/Items'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
-import Home from '../routes/Home.js'
 import Item from '../routes/Item'
 
 class App extends Component {
@@ -48,8 +49,9 @@ class App extends Component {
 
           {/* Add a home page */}
           {/* 'exact' keeps Home on separate 'page' */}
-          <Route exact path='/' component={Home} />
-
+          <Route exact path='/' render={() => (
+            <Home />
+          )} />
           <Route exact path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -70,6 +72,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/items' render={() => (
             <Items msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/items/:id/edit' render={() => (
+            <ItemEdit msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

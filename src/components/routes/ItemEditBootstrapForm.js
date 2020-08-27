@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { itemCreate } from '../../api/item'
+import { editItem } from '../../api/item'
 import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Layout from '../../components/Layout'
 
-class ItemCreate extends Component {
+class ItemEdit extends Component {
   constructor () {
     super()
 
@@ -23,23 +23,26 @@ class ItemCreate extends Component {
     [event.target.name]: event.target.value
   })
 
-  onItemCreate = event => {
+  onItemEdit = event => {
     event.preventDefault()
 
     const { msgAlert, history, user } = this.props
 
-    itemCreate(this.state, user)
+    // const itemId =
+
+    editItem(this.state, user)
       .then(() => msgAlert({
-        heading: 'Item Create Success',
-        message: messages.itemCreateSuccess,
+        heading: 'Item Edit Success',
+        message: messages.itemEditSuccess,
         variant: 'success'
       }))
+      // ** DO WE WANT TO GO BACK TO INDEX ITEMS OR SHOW ITEM AFTER EDIT/UPDATE? if yes, '/items/???id???'
       .then(() => history.push('/items'))
       .catch(error => {
         this.setState({ name: '', quantity: '', price: '' })
         msgAlert({
-          heading: 'Item Creation Failed with error: ' + error.message,
-          message: messages.ItemCreationFailure,
+          heading: 'Item Edit Failure: ' + error.message,
+          message: messages.ItemEditFailure,
           variant: 'danger'
         })
       })
@@ -52,8 +55,8 @@ class ItemCreate extends Component {
       <Layout>
         <div className="row">
           <div className="col-sm-10 col-md-8 mx-auto mt-5">
-            <h3>Item Create</h3>
-            <Form onSubmit={this.onItemCreate}>
+            <h3>Edit Item</h3>
+            <Form onSubmit={this.onItemEdit}>
               <Form.Group controlId="name">
                 <Form.Label>Item Name</Form.Label>
                 <Form.Control
@@ -101,4 +104,4 @@ class ItemCreate extends Component {
   }
 }
 
-export default withRouter(ItemCreate)
+export default withRouter(ItemEdit)
