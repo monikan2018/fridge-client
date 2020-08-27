@@ -79,7 +79,7 @@ class Item extends Component {
         <p>Price: {item.price}</p>
         <button onClick={this.destroyItem}>Delete Item</button>
         {/* Add a link to the edit item route when you click the edit button */}
-        <Link to={`/item/${this.props.match.params.id}/edit`}>
+        <Link to={`/items/${this.props.match.params.id}/edit`}>
           <button>Edit</button>
         </Link>
         <Link to='/items'>Back to all items</Link>
