@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import Layout from '../../shared/Layout'
+import Layout from '../Layout'
 
 // import the api's url
 import apiUrl from '../../apiConfig'
