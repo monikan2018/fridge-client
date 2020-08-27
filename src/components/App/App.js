@@ -11,6 +11,7 @@ import Items from '../routes/Items'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Home from '../routes/Home.js'
+import Item from '../routes/Item'
 
 class App extends Component {
   constructor () {
@@ -63,6 +64,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/item-create' render={() => (
             <ItemCreate msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/items/:id' render={(navProps) => (
+            <Item {...navProps} msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/items' render={() => (
             <Items msgAlert={this.msgAlert} user={user} />

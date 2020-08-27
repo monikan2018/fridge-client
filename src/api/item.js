@@ -25,7 +25,7 @@ export const index = (item, user) => {
     headers: {
       'Authorization': `Token token=${user.token}`
     },
-    url: apiUrl + '/items',
+    url: apiUrl + '/items/',
     method: 'GET',
     data: {
       item: {
@@ -36,20 +36,14 @@ export const index = (item, user) => {
     }
   })
 }
-export const show = (id, items, user) => {
+export const show = (id, user) => {
+  // console.log(props, 'this is show')
   return axios({
     headers: {
-      'Authorization': `Bearer token=${user.token}`
+      'Authorization': `Token token=${user.token}`
     },
-    url: apiUrl + '/items',
-    method: 'GET',
-    data: {
-      items: {
-        name: items.name,
-        quantity: items.quantity,
-        price: items.price
-      }
-    }
+    url: apiUrl + '/items/' + id,
+    method: 'GET'
   })
 }
 // export const delete = (id, user) => {

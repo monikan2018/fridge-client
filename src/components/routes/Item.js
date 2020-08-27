@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import Layout from '../Layout'
-
-// import the api's url
+import messages from '../AutoDismissAlert/messages'
+import { show } from '../../api/item'
 import apiUrl from '../../apiConfig'
-
-// Import axios so we can make HTTP requests
 import axios from 'axios'
 
 class Item extends Component {
@@ -20,14 +18,24 @@ class Item extends Component {
       deleted: false
     }
   }
-
-  // runs when the component appears (is created and inserted into DOM)
   componentDidMount () {
-    // make a request to get the item, with the current routes'id
-    axios(`${apiUrl}/items/${this.props.match.params.id}`)
-      // set the `item` state to the `item` data we got back from the response (res.data.item)
+    console.log(this.props)
+    const { user, msgAlert } = this.props
+    show(this.props.match.params.id, user)
       .then(res => this.setState({ item: res.data.item }))
-      .catch(console.error)
+      .then(() => msgAlert({
+        heading: 'Item Show Success',
+        message: messages.itemShowSuccess,
+        variant: 'success'
+      }))
+      .then(() => history.push('/'))
+      .catch(error => {
+        msgAlert({
+          heading: 'Item index Failed with error: ' + error.message,
+          message: messages.ItemShowFailure,
+          variant: 'danger'
+        })
+      })
   }
 
   destroyItem = () => {
