@@ -6,7 +6,7 @@ import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../Header/Header'
 import Home from '../routes/Home.js'
 import ItemCreate from '../routes/ItemCreate'
-import ItemEdit from '../routes/ItemEdit.js'
+import ItemEditBootstrapForm from '../routes/ItemEditBootstrapForm.js'
 import Items from '../routes/Items'
 import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
@@ -67,15 +67,16 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/item-create' render={() => (
             <ItemCreate msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/items/:id/edit' render={(navProps) => (
+            <ItemEditBootstrapForm {...navProps} msgAlert={this.msgAlert} user={user} />
+          )} />
           <AuthenticatedRoute user={user} exact path='/items/:id' render={(navProps) => (
             <Item {...navProps} msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/items' render={() => (
             <Items msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/items/:id/edit' render={() => (
-            <ItemEdit msgAlert={this.msgAlert} user={user} />
-          )} />
+
         </main>
       </Fragment>
     )
