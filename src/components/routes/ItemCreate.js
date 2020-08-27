@@ -71,7 +71,7 @@ class ItemCreate extends Component {
                   required
                   name="quantity"
                   value={quantity}
-                  type="text"
+                  type="number"
                   placeholder="Quantity"
                   onChange={this.handleChange}
                 />
