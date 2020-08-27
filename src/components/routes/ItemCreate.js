@@ -34,7 +34,7 @@ class ItemCreate extends Component {
         message: messages.itemCreateSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      .then(() => history.push('/items'))
       .catch(error => {
         this.setState({ name: '', quantity: '', price: '' })
         msgAlert({
