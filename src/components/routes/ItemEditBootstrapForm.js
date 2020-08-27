@@ -28,9 +28,7 @@ class ItemEdit extends Component {
 
     const { msgAlert, history, user } = this.props
 
-    // const itemId =
-
-    editItem(this.state, user)
+    editItem(this.props.match.params.id, user, this.state)
       .then(() => msgAlert({
         heading: 'Item Edit Success',
         message: messages.itemEditSuccess,
@@ -60,7 +58,7 @@ class ItemEdit extends Component {
               <Form.Group controlId="name">
                 <Form.Label>Item Name</Form.Label>
                 <Form.Control
-                  required
+                  // required
                   type="text"
                   name="name"
                   value={name}
@@ -71,7 +69,7 @@ class ItemEdit extends Component {
               <Form.Group controlId="quantity">
                 <Form.Label>Quantity</Form.Label>
                 <Form.Control
-                  required
+                  // required
                   name="quantity"
                   value={quantity}
                   type="text"
@@ -82,7 +80,7 @@ class ItemEdit extends Component {
               <Form.Group controlId="price">
                 <Form.Label>Price</Form.Label>
                 <Form.Control
-                  required
+                  // required
                   name="price"
                   value={price}
                   type="number"
