@@ -1,50 +1,80 @@
-import React, { useState, useEffect } from 'react'
+import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import axios from 'axios'
+import Layout from '../../shared/Layout'
+
+// import the api's url
 import apiUrl from '../../apiConfig'
 
-const Item = props => {
+// Import axios so we can make HTTP requests
+import axios from 'axios'
 
-  // call useState to get the `item` state and a `setItem` function to update it
-  // the initial value of `item` is `null`
-  const [item, setItem] = useState(null)
-  const [deleted, setDeleted] = useState(false)
-  // Do something when the component first appears on the screen
-  // whenever the component is mounted (created and inserted into the DOM)
-  // since the dependencies array is empty, this acts like componentDidMount
-  useEffect(() => {
-    axios(`${apiUrl}/items/${props.match.params.id}`)
-      .then(res => setItem(res.data.item))
+class Item extends Component {
+  constructor (props) {
+    // this makes sure that `this.props` is set in the constructor
+    super(props)
+
+    this.state = {
+      // Initially, our item state will be null, until the API request finishes
+      item: null,
+      // initially this item has not been deleted yet
+      deleted: false
+    }
+  }
+
+  // runs when the component appears (is created and inserted into DOM)
+  componentDidMount () {
+    // make a request to get the item, with the current routes'id
+    axios(`${apiUrl}/items/${this.props.match.params.id}`)
+      // set the `item` state to the `item` data we got back from the response (res.data.item)
+      .then(res => this.setState({ item: res.data.item }))
       .catch(console.error)
-  }, [])
-  // this.destroy = this.destroy.bind(this)
-  const destroy = () => {
+  }
+
+  destroyItem = () => {
     axios({
-      url: `${apiUrl}/items/${props.match.params.id}`,
+      url: `${apiUrl}/items/${this.props.match.params.id}`,
       method: 'DELETE'
     })
-      .then(() => setDeleted(true))
+      // update their `deleted` state to be `true`
+      .then(() => this.setState({ deleted: true }))
       .catch(console.error)
   }
-  if (!item) {
-    return <p>Loading...</p>
+
+  render () {
+    // destructure our item property out of state
+    const { item, deleted } = this.state
+
+    // if we don't have a item (item is null)
+    if (!item) {
+      return <p>Loading...</p>
+    }
+
+    // if the deleted state is true
+    if (deleted) {
+      // redirect to the home page
+      return <Redirect to={{
+        // Redirect to the home page ('/')
+        pathname: '/',
+        // Pass along a message, in state, that we can show
+        state: { message: 'Deleted item successfully' }
+      }} />
+    }
+
+    return (
+      <Layout>
+        <h4>{item.name}</h4>
+        <p>Item: {item.name}</p>
+        <p>Quantity: {item.quantity}</p>
+        <p>Price: {item.price}</p>
+        <button onClick={this.destroyBook}>Delete Book</button>
+        {/* Add a link to the edit item route when you click the edit button */}
+        <Link to={`/item/${this.props.match.params.id}/edit`}>
+          <button>Edit</button>
+        </Link>
+        <Link to='/items'>Back to all items</Link>
+      </Layout>
+    )
   }
-  if (deleted) {
-    return <Redirect to={
-      { pathname: '/', state: { msg: 'Item succesfully deleted!' } }
-    } />
-  }
-  return (
-    <div>
-      <h4>{item.name}</h4>
-      <p>Quantity: {item.quantity}</p>
-      <p>Amount: {item.amount}</p>
-      <button onClick={destroy}>Delete Book</button>
-      <Link to={`/item/${props.match.params.id}/edit`}>
-        <button>Edit</button>
-      </Link>
-      <Link to="/items">Back to all items</Link>
-    </div>
-  )
 }
+
 export default Item
