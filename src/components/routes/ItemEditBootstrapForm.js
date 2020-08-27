@@ -34,7 +34,6 @@ class ItemEdit extends Component {
         message: messages.itemEditSuccess,
         variant: 'success'
       }))
-      // ** DO WE WANT TO GO BACK TO INDEX ITEMS OR SHOW ITEM AFTER EDIT/UPDATE? if yes, '/items/???id???'
       .then(() => history.push('/items'))
       .catch(error => {
         this.setState({ name: '', quantity: '', price: '' })
