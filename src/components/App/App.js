@@ -69,7 +69,7 @@ class App extends Component {
             <Items msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/items/:id/edit' render={() => (
-            <Items msgAlert={this.msgAlert} user={user} />
+            <ItemEdit msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>
