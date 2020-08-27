@@ -48,8 +48,9 @@ class App extends Component {
 
           {/* Add a home page */}
           {/* 'exact' keeps Home on separate 'page' */}
-          <Route exact path='/' component={Home} />
-
+          <Route exact path='/' render={() => (
+            <Home />
+          )} />
           <Route exact path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
