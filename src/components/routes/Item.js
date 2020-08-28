@@ -28,7 +28,7 @@ class Item extends Component {
         message: messages.itemShowSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      // .then(() => history.push('/'))
       .catch(error => {
         msgAlert({
           heading: 'Item index Failed with error: ' + error.message,
