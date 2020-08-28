@@ -14,7 +14,6 @@ class Items extends Component {
   //   [event.target.name]: event.target.value
   // })
   componentDidMount () {
-    console.log(this.props)
     const { user, msgAlert } = this.props
     index(this.state, user)
       .then(res => this.setState({ items: res.data.items }))
@@ -35,7 +34,6 @@ class Items extends Component {
 
   render () {
   // const { name, quantity, price } = this.state
-    console.log(this.state, 'We are in render')
     const items = this.state.items.map(item => (
       <li key={item._id}>
         <Link to={`/items/${item._id}`}>

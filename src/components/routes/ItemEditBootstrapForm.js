@@ -71,7 +71,8 @@ class ItemEdit extends Component {
                   // required
                   name="quantity"
                   value={quantity}
-                  type="text"
+                  type="number"
+                  min='0'
                   placeholder="Quantity"
                   onChange={this.handleChange}
                 />
@@ -83,6 +84,7 @@ class ItemEdit extends Component {
                   name="price"
                   value={price}
                   type="number"
+                  min='0'
                   placeholder="Price"
                   onChange={this.handleChange}
                 />

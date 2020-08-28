@@ -19,7 +19,6 @@ class Item extends Component {
     }
   }
   componentDidMount () {
-    console.log(this.props)
     const { user, msgAlert } = this.props
     show(this.props.match.params.id, user)
       .then(res => this.setState({ item: res.data.item }))

@@ -2,9 +2,6 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 export const itemCreate = (item, user) => {
-  console.log('inside api-item')
-  console.log(user.token)
-  console.log(item)
   return axios({
     headers: {
       'Authorization': `Token token=${user.token}`
@@ -37,7 +34,6 @@ export const index = (item, user) => {
   })
 }
 export const show = (id, user) => {
-  // console.log(props, 'this is show')
   return axios({
     headers: {
       'Authorization': `Token token=${user.token}`

@@ -23,7 +23,6 @@ class ChangePassword extends Component {
 
   onChangePassword = event => {
     event.preventDefault()
-    console.log(event, 'We Are Here')
     const { msgAlert, history, user } = this.props
 
     changePassword(this.state, user)
