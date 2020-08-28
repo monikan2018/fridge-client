@@ -48,7 +48,7 @@ class Item extends Component {
       method: 'DELETE'
     })
       // update their `deleted` state to be `true`
-      .then(res => this.setState({ items: res.data.items }))
+      // .then(res => this.setState({ items: res.data.items }))
       .then(() => msgAlert({
         heading: 'Bye Felica',
         message: messages.itemDeleteSuccess,
@@ -59,7 +59,7 @@ class Item extends Component {
       .catch(error => {
         msgAlert({
           heading: 'Item index Failed with error: ' + error.message,
-          message: messages.itemDeleteSuccess,
+          message: messages.itemDeleteFailure,
           variant: 'danger'
         })
       })
@@ -93,7 +93,7 @@ class Item extends Component {
         <p>Price: {item.price}</p>
         <button onClick={this.destroyItem}>Delete Item</button>
         {/* Add a link to the edit item route when you click the edit button */}
-        <Link to={`/item/${this.props.match.params.id}/edit`}>
+        <Link to={`/items/${this.props.match.params.id}/edit`}>
           <button>Edit</button>
         </Link>
         <Link to='/items'>Back to all items</Link>
