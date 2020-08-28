@@ -11,5 +11,7 @@ export default {
   itemIndexSuccess: 'Item has been successfully viewed',
   itemIndexFailure: 'Item view failed.',
   itemEditSuccess: 'Item successfully edited.',
-  itemEditFailure: 'Item was not edited.'
+  itemEditFailure: 'Item was not edited.',
+  itemDeleteSuccess: 'Item has been Deleted',
+  itemDeleteFailure: 'Item has not been Deleted'
 }

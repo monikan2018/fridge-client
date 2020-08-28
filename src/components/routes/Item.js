@@ -28,17 +28,18 @@ class Item extends Component {
         message: messages.itemShowSuccess,
         variant: 'success'
       }))
-      // .then(() => history.push('/'))
+      .then(() => history.push('/'))
       .catch(error => {
         msgAlert({
           heading: 'Item index Failed with error: ' + error.message,
-          message: messages.ItemShowFailure,
+          message: messages.itemShowFailure,
           variant: 'danger'
         })
       })
   }
 
   destroyItem = (user) => {
+    const { msgAlert } = this.props
     axios({
       headers: {
         'Authorization': `Token token=${this.props.user.token}`
@@ -47,8 +48,21 @@ class Item extends Component {
       method: 'DELETE'
     })
       // update their `deleted` state to be `true`
+      .then(res => this.setState({ items: res.data.items }))
+      .then(() => msgAlert({
+        heading: 'Bye Felica',
+        message: messages.itemDeleteSuccess,
+        variant: 'success'
+      }))
       .then(() => this.setState({ deleted: true }))
       .catch(console.error)
+      .catch(error => {
+        msgAlert({
+          heading: 'Item index Failed with error: ' + error.message,
+          message: messages.itemDeleteSuccess,
+          variant: 'danger'
+        })
+      })
   }
 
   render () {
@@ -79,7 +93,7 @@ class Item extends Component {
         <p>Price: {item.price}</p>
         <button onClick={this.destroyItem}>Delete Item</button>
         {/* Add a link to the edit item route when you click the edit button */}
-        <Link to={`/items/${this.props.match.params.id}/edit`}>
+        <Link to={`/item/${this.props.match.params.id}/edit`}>
           <button>Edit</button>
         </Link>
         <Link to='/items'>Back to all items</Link>
