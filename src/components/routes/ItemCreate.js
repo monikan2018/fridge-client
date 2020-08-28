@@ -26,7 +26,7 @@ class ItemCreate extends Component {
   onItemCreate = event => {
     event.preventDefault()
 
-    const { msgAlert, history, user } = this.props
+    const { msgAlert, user } = this.props
 
     itemCreate(this.state, user)
       .then(() => msgAlert({
@@ -34,7 +34,8 @@ class ItemCreate extends Component {
         message: messages.itemCreateSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/items'))
+      // .then(() => history.push('/items'))
+      .then(() => this.setState({ name: '', quantity: '', price: '' }))
       .catch(error => {
         this.setState({ name: '', quantity: '', price: '' })
         msgAlert({
