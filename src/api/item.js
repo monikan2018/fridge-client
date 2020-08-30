@@ -10,7 +10,7 @@ export const itemCreate = (item, user) => {
     method: 'POST',
     data: {
       item: {
-        name: item.name,
+        name: item.name.toLowerCase(),
         quantity: item.quantity,
         price: item.price
       }

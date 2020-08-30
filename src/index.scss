@@ -11,3 +11,16 @@ $black-font: #000;
 body {
   background-color: $background-color;
 }
+table{
+  width: 50%;
+}
+
+table, th, td{
+  border: 1px solid lightgrey;
+  border-collapse: collapse;
+}
+
+th,td{
+  padding:10px 4px;
+  text-align: center;
+}

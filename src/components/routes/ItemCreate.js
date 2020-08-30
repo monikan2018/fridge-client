@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { itemCreate } from '../../api/item'
+// import { index } from '../../api/item'
 import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
@@ -26,7 +27,7 @@ class ItemCreate extends Component {
   onItemCreate = event => {
     event.preventDefault()
 
-    const { msgAlert, history, user } = this.props
+    const { msgAlert, user } = this.props
 
     itemCreate(this.state, user)
       .then(() => msgAlert({
@@ -34,7 +35,7 @@ class ItemCreate extends Component {
         message: messages.itemCreateSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/items'))
+      .then(() => this.setState({ name: '', quantity: '', price: '' }))
       .catch(error => {
         this.setState({ name: '', quantity: '', price: '' })
         msgAlert({

@@ -3,6 +3,8 @@ import { Link, withRouter } from 'react-router-dom'
 import { index } from '../../api/item'
 import messages from '../AutoDismissAlert/messages'
 import Layout from '../../components/Layout'
+// import QRCode from 'react-qrcode-generator'
+import QRImage from 'react-qr-image'
 class Items extends Component {
   constructor () {
     super()
@@ -35,18 +37,24 @@ class Items extends Component {
   render () {
   // const { name, quantity, price } = this.state
     const items = this.state.items.map(item => (
-      <li key={item._id}>
-        <Link to={`/items/${item._id}`}>
-          {item.name}
-        </Link>
-      </li>
+      <tr key={item._id}>
+        <td><Link to={`/items/${item._id}`}>{item.name}</Link></td>
+        <td><QRImage
+          height={60} width={60}
+          text = {`${item.name}  qty: ${item.quantity} price: ${item.price}`}/></td>
+      </tr>
     ))
     return (
       <Layout>
-        <h4>Items</h4>
-        <ul>
-          {items}
-        </ul>
+        <table>
+          <tbody>
+            <tr>
+              <th scope="col">Items</th>
+              <th scope="col">QRCode</th>
+            </tr>
+            {items}
+          </tbody>
+        </table>
       </Layout>
     )
   }
