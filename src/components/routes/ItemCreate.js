@@ -31,7 +31,7 @@ class ItemCreate extends Component {
 
     itemCreate(this.state, user)
       .then(() => msgAlert({
-        heading: 'Item Create Success',
+        heading: 'Added to your inventory!',
         message: messages.itemCreateSuccess,
         variant: 'success'
       }))
@@ -39,7 +39,7 @@ class ItemCreate extends Component {
       .catch(error => {
         this.setState({ name: '', quantity: '', price: '' })
         msgAlert({
-          heading: 'Item Creation Failed with error: ' + error.message,
+          heading: 'Couldn\'t add this to your inventory. ' + error.message,
           message: messages.ItemCreationFailure,
           variant: 'danger'
         })

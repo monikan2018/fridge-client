@@ -20,15 +20,15 @@ class Items extends Component {
     index(this.state, user)
       .then(res => this.setState({ items: res.data.items }))
       .then(() => msgAlert({
-        heading: 'Item Show Success',
+        heading: 'Here\'s your entire inventory!',
         message: messages.itemIndexSuccess,
         variant: 'success'
       }))
       // .then(() => history.push('/'))
       .catch(error => {
         msgAlert({
-          heading: 'Item index Failed with error: ' + error.message,
-          message: messages.ItemIndexFailure,
+          heading: 'Can\'t see your inventory.' + error.message,
+          message: messages.itemIndexFailure,
           variant: 'danger'
         })
       })

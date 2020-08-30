@@ -59,14 +59,14 @@ class ItemEdit extends Component {
     })
       .then(() => this.setState({ updated: true }))
       .then(() => msgAlert({
-        heading: 'Item Edit Success',
+        heading: 'Item updated!',
         message: messages.itemEditSuccess,
         variant: 'success'
       }))
       .catch(error => {
         this.setState({ name: '', quantity: '', price: '' })
         msgAlert({
-          heading: 'Item Edit Failure: ' + error.message,
+          heading: 'Item hasn\'t changed! ' + error.message,
           message: messages.ItemEditFailure,
           variant: 'danger'
         })

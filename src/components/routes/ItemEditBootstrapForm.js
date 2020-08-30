@@ -30,7 +30,7 @@ class ItemEdit extends Component {
 
     editItem(this.props.match.params.id, user, this.state)
       .then(() => msgAlert({
-        heading: 'Item Edit Success',
+        heading: 'Updated!',
         message: messages.itemEditSuccess,
         variant: 'success'
       }))
@@ -38,7 +38,7 @@ class ItemEdit extends Component {
       .catch(error => {
         this.setState({ name: '', quantity: '', price: '' })
         msgAlert({
-          heading: 'Item Edit Failure: ' + error.message,
+          heading: 'Item hasn\'t changed! ' + error.message,
           message: messages.ItemEditFailure,
           variant: 'danger'
         })
