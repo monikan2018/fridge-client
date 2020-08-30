@@ -23,14 +23,14 @@ class Item extends Component {
     show(this.props.match.params.id, user)
       .then(res => this.setState({ item: res.data.item }))
       .then(() => msgAlert({
-        heading: 'Item Show Success',
+        heading: 'Here you go!',
         message: messages.itemShowSuccess,
         variant: 'success'
       }))
       // .then(() => history.push('/'))
       .catch(error => {
         msgAlert({
-          heading: 'Item index Failed with error: ' + error.message,
+          heading: 'Can\'t seem to find that. ' + error.message,
           message: messages.itemShowFailure,
           variant: 'danger'
         })
@@ -49,7 +49,7 @@ class Item extends Component {
       // update their `deleted` state to be `true`
       // .then(res => this.setState({ items: res.data.items }))
       .then(() => msgAlert({
-        heading: 'Bye Felica',
+        heading: 'Item removed!',
         message: messages.itemDeleteSuccess,
         variant: 'success'
       }))
@@ -57,7 +57,7 @@ class Item extends Component {
       .catch(console.error)
       .catch(error => {
         msgAlert({
-          heading: 'Item index Failed with error: ' + error.message,
+          heading: 'Failed to remove item.' + error.message,
           message: messages.itemDeleteFailure,
           variant: 'danger'
         })
