@@ -57,7 +57,6 @@ In future iterations, we'd like to ...
 - add a search function that allows the user to find specific items via search bar.
 - add a sort and filter function so the user can organize and customize their view of the inventory (ie. alphabetical order, lowest-highest in quantity, category of fruits/vegetables/dairy, etc.)
 
-
 ## Images
 
 #### Wireframe:
